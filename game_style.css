@@ -78,7 +78,6 @@ body.game-mode {
 }
 
 /* Station Styles - All sections become full-screen overlays */
-/* Station Styles - All sections become full-screen overlays */
 .section {
     position: fixed;
     /* Fixed to viewport */
@@ -86,38 +85,36 @@ body.game-mode {
     left: 0;
     width: 100%;
     height: 100vh;
-    padding-top: 60px;
-    /* Minimized top padding */
-    padding-bottom: 0;
+    padding-top: 80px;
+    /* Account for navbar height */
+    padding-bottom: 80px;
     opacity: 0 !important;
-    /* Override .fade-in.visible from script.js */
     pointer-events: none;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     transform: scale(0.95);
     z-index: 10;
 
-    /* Layout: Align to top, leave bottom clear */
+    /* Layout: Center content with offset from top */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    /* Safe centering with margin: auto */
+    overflow-y: auto;
 }
 
 .section::-webkit-scrollbar {
     display: none;
 }
 
-/* Container within section - Limit height to keep bottom clear */
+/* Container within section - Center it */
 .section .container {
-    max-height: 75vh;
-    /* Increased to 75% - adding "1 inch" more space */
-    margin-bottom: 5vh;
-    /* Lift it up from the bottom */
-    overflow-y: auto;
-    /* Scroll inside this box */
     width: 100%;
     max-width: 1200px;
-    padding: 20px;
+    padding: 40px 20px;
+    margin: auto;
+    /* Center vertically and horizontally */
+    overflow-y: auto;
 
     /* Optional: Add background to container for readability */
     background: rgba(0, 0, 0, 0.3);
@@ -160,6 +157,13 @@ body.station-mode .section.active-station {
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     z-index: 10;
     pointer-events: none;
+
+    /* Center content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Center content vertically */
 }
 
 body.station-mode .hero:not(.departed).active-station {
@@ -173,9 +177,12 @@ body.station-mode .hero:not(.departed).active-station {
     transform: scale(1.1);
 }
 
-/* Ensure container fits in the fixed view */
-.container {
-    /* Styles handled above in .section .container specificity */
+/* Ensure hero container is positioned centrally */
+.hero .container {
+    margin: auto;
+    /* Center vertically */
+    padding: 40px;
+    text-align: center;
 }
 
 /* Fix Navbar z-index to be above game and stations */
@@ -215,4 +222,205 @@ body.station-mode .hero:not(.departed).active-station {
 /* Hide labels when focused on content */
 body.station-mode .station-label {
     opacity: 0 !important;
+}
+
+/* Blur Effect on Game Container when station is active */
+body.station-mode #game-container {
+    /* OPTIMIZATION: Blur is expensive. Using brightness/contrast is much faster. */
+    filter: brightness(0.3);
+    transform: scale(1.02);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Train Controls */
+#train-controls {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    /* Bottom Right */
+    left: auto;
+    transform: none;
+    z-index: 1001;
+    pointer-events: auto;
+}
+
+#gear-display {
+    position: absolute;
+    top: -60px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+    text-shadow: 0 0 5px #00ff00;
+    pointer-events: none;
+    transition: transform 0.1s;
+    will-change: transform;
+    /* Performance hint */
+}
+
+#gear-display.shifting {
+    color: #ffff00;
+    transform: scale(1.1);
+}
+
+.control-group {
+    display: flex;
+    gap: 30px;
+    align-items: flex-end;
+}
+
+.pedal-btn {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.1s ease;
+    will-change: transform;
+    /* Performance hint */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pedal-face {
+    display: block;
+    background: linear-gradient(135deg, #444 0%, #222 100%);
+    border: 2px solid #666;
+    border-radius: 10px;
+    box-shadow:
+        inset 2px 2px 5px rgba(255, 255, 255, 0.1),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.5),
+        5px 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Grip lines pattern */
+.pedal-face::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 0, 0, 0.5) 10px,
+            rgba(0, 0, 0, 0.5) 12px);
+}
+
+.pedal-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Accelerator Specifics */
+.pedal-btn.accel .pedal-face {
+    width: 60px;
+    height: 140px;
+    background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+    border-color: #34495e;
+}
+
+/* Brake Specifics */
+.pedal-btn.brake .pedal-face {
+    width: 100px;
+    height: 80px;
+    background: linear-gradient(135deg, #502c2c 0%, #1a0a0a 100%);
+    border-color: #5e3434;
+}
+
+/* Horn Specifics */
+.pedal-btn.horn {
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.pedal-btn.horn .pedal-face {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f1c40f 0%, #b7950b 100%);
+    border-color: #f39c12;
+    box-shadow:
+        inset 2px 2px 5px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.2),
+        2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.pedal-btn.horn .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+.pedal-btn.horn:active .pedal-face {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #d4ac0d 0%, #9a7d0a 100%);
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.6);
+}
+
+/* Active States */
+.pedal-btn:active,
+.pedal-btn.active {
+    transform: perspective(500px) rotateX(15deg) scale(0.95);
+}
+
+.pedal-btn.accel:active .pedal-face,
+.pedal-btn.accel.active .pedal-face {
+    background: linear-gradient(135deg, #2ecc71 0%, #006400 100%);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+    border-color: #2ecc71;
+}
+
+.pedal-btn.brake:active .pedal-face,
+.pedal-btn.brake.active .pedal-face {
+    background: linear-gradient(135deg, #e74c3c 0%, #8b0000 100%);
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
+    border-color: #e74c3c;
+}
+
+/* Controls always visible */
+body.station-mode #train-controls {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #train-controls {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .control-group {
+        gap: 20px;
+    }
+
+    .pedal-btn.accel .pedal-face {
+        width: 50px;
+        height: 120px;
+    }
+
+    .pedal-btn.brake .pedal-face {
+        width: 80px;
+        height: 70px;
+    }
 }

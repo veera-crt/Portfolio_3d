@@ -44,8 +44,8 @@ body {
 }
 
 .scroll-container {
-    will-change: transform;
-    transition: transform 0.1s linear;
+    /* will-change: transform; removed to prevent stacking context issues with fixed children */
+    /* transition: transform 0.1s linear; removed */
 }
 
 @keyframes gradientBG {

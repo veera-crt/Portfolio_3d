@@ -36,6 +36,25 @@
     <div id="game-container"></div>
     <!-- Game UI Hint Removed -->
     <div id="station-labels"></div>
+
+    <!-- Train Controls -->
+    <div id="train-controls">
+        <div id="gear-display">D1</div>
+        <button id="btn-horn" class="pedal-btn horn" aria-label="Horn">
+            <span class="pedal-face"></span>
+            <i class="fas fa-bullhorn icon"></i>
+        </button>
+        <div class="control-group">
+            <button id="btn-brake" class="pedal-btn brake" aria-label="Brake">
+                <span class="pedal-face"></span>
+                <span class="pedal-label">BRAKE</span>
+            </button>
+            <button id="btn-accel" class="pedal-btn accel" aria-label="Accelerator">
+                <span class="pedal-face"></span>
+                <span class="pedal-label">GAS</span>
+            </button>
+        </div>
+    </div>
     <!-- Original Canvas kept for fallback/background if needed, but game-container takes priority -->
     <canvas id="hero-canvas" style="display: none;"></canvas>
     <nav class="navbar">
@@ -66,8 +85,8 @@
         <header class="hero">
             <div class="container hero-content">
                 <h1 class="hero-title">
-                    Building <br>
-                    <span class="gradient-text">Secure Systems</span>
+                    Veerapandi G <br>
+                    <span class="gradient-text">Portfolio</span>
                 </h1>
                 <p class="hero-subtitle">I am a cybersecurity student.</p>
                 <div class="hero-buttons">
