@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veerapandi | Cybersecurity Portfolio</title>
+    <meta name="description" content="Portfolio of a Creative Developer specializing in modern web experiences.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader-content">
+            <span class="loader-text">Loading...</span>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <!-- Scroll progress removed -->
+    <div class="noise-overlay"></div>
+    <div class="ambient-light">
+        <div class="light-orb light-1"></div>
+        <div class="light-orb light-2"></div>
+        <div class="light-orb light-3"></div>
+    </div>
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Game Canvas Container -->
+    <div id="game-container"></div>
+    <!-- Game UI Hint Removed -->
+    <div id="station-labels"></div>
+    <!-- Original Canvas kept for fallback/background if needed, but game-container takes priority -->
+    <canvas id="hero-canvas" style="display: none;"></canvas>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Veerapandi<span class="accent">.</span></a>
+            <div class="nav-wrapper">
+                <div id="train-progress-track">
+                    <div id="train-progress-bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="scroll-container">
+        <header class="hero">
+            <div class="container hero-content">
+                <h1 class="hero-title">
+                    Building <br>
+                    <span class="gradient-text">Secure Systems</span>
+                </h1>
+                <p class="hero-subtitle">I am a cybersecurity student.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Work</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+        </header>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image-container flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="assets/profile.png" alt="Veerapandi" class="about-profile-img">
+                                <div class="image-glow"></div>
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="assets/avatar.png" alt="Cyber Avatar" class="about-profile-img">
+                                <div class="image-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text-content">
+                        <p class="about-text">
+                            I'm Veerapandi, a passionate Cybersecurity Enthusiast with a keen eye for digital defense
+                            and a love for uncovering the unseen in the cyber world. From ethical hacking to building
+                            secure systems, I thrive on learning, adapting, and solving real-world security challenges.
+                        </p>
+                        <div class="about-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Name:</span>
+                                <span class="detail-value">Veerapandi</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Date of Birth:</span>
+                                <span class="detail-value">January 12, 2006</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Location:</span>
+                                <span class="detail-value">SRM University, Chennai</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Email:</span>
+                                <span class="detail-value">vg2632@srmist.edu.in</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Phone:</span>
+                                <span class="detail-value">+91-7868953592</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <p class="section-subtitle">Technologies and tools I work with</p>
+                <div class="skills-grid">
+                    <div class="skill-card">Frontend</div>
+                    <div class="skill-card">Backend</div>
+                    <div class="skill-card">Full Stack</div>
+                    <div class="skill-card">MySQL</div>
+                    <div class="skill-card">PostgreSQL</div>
+                    <div class="skill-card">Python</div>
+                    <div class="skill-card">Java</div>
+                    <div class="skill-card">Node.js</div>
+                    <div class="skill-card">Prompt Engineering</div>
+                    <div class="skill-card">Presentation</div>
+                    <div class="skill-card">Canva</div>
+                    <div class="skill-card">Content Creation</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="section">
+            <div class="container">
+                <h2 class="section-title">Resume</h2>
+                <!-- Subtitle removed in favor of timeline headers -->
+
+                <div class="timeline">
+                    <!-- Education Header -->
+                    <h3 class="timeline-header">Education</h3>
+
+                    <!-- Education Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 — 2027</div>
+                        <div class="timeline-content resume-card">
+                            <h3>Bachelor of Technology in Cybersecurity</h3>
+                            <h4>SRM University</h4>
+                            <p>Currently pursuing B.Tech CSE-Cybersecurity at SRM University, completed Fourth Semester
+                                successfully.</p>
+                            <div class="academic-performance">
+                                <p><strong>Academic Performance:</strong></p>
+                                <ul>
+                                    <li>Sem 1: SGPA 7.818 / 10</li>
+                                    <li>Sem 2: SGPA 8.476 / 10</li>
+                                    <li>Sem 3: SGPA 8.957 / 10</li>
+                                    <li>Sem 4: SGPA 9.350 / 10</li>
+                                    <li class="highlight">Total CGPA: 8.64 / 10</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2011 — 2023</div>
+                        <div class="timeline-content resume-card">
+                            <h3>Higher Secondary Education</h3>
+                            <h4>R V Matriculation Higher Secondary School</h4>
+                            <p>Completed schooling (1st - 12th) with focus on science (Biology) and mathematics.</p>
+                            <p class="grade-highlight">Percentage: 77.3%</p>
+                        </div>
+                    </div>
+
+                    <!-- Experience Header -->
+                    <h3 class="timeline-header" style="margin-top: 60px;">Experience</h3>
+
+                    <!-- Exp 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Jan 2025 — Present</div>
+                        <div class="timeline-content resume-card">
+                            <h3>IEI Club Lead - Media</h3>
+                            <h4>IEI Branch SRMIST KTR</h4>
+                            <p>Actively contributing as a member of the media team by creating engaging content,
+                                managing event coverage, and supporting initiatives that enhance communication,
+                                creativity, and collaboration among peers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Jan 2025 — Present</div>
+                        <div class="timeline-content resume-card">
+                            <h3>Technical Club Member</h3>
+                            <h4>NWC Association SRMIST KTR</h4>
+                            <p>Actively contributing as a member of the technical club by engaging in community connect
+                                programs, organizing technical events, and supporting initiatives that promote
+                                innovation and collaboration among peers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2025 — Present</div>
+                        <div class="timeline-content resume-card">
+                            <h3>Full Stack Developer</h3>
+                            <h4>Junior Developer - Freelance</h4>
+                            <p>Designed, developed, and maintained end-to-end web applications using Python (Flask),
+                                PostgreSQL, and modern JavaScript frameworks, ensuring high performance and security
+                                with AES-256 encryption, MFA workflows, and OWASP best practices.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024 — 2025</div>
+                        <div class="timeline-content resume-card">
+                            <h3>Web Designer</h3>
+                            <h4>Freelance</h4>
+                            <p>Design clean, responsive websites that work across all devices. Focus on user experience,
+                                accessibility, and security while collaborating with development teams.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">June 2025 — July 2025</div>
+                        <div class="timeline-content resume-card">
+                            <h3>Social Service Worker</h3>
+                            <h4>Worker / Helper</h4>
+                            <p>Actively involved in community connect programs, supporting local initiatives, organizing
+                                events, and helping individuals through social awareness and outreach activities.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp 6 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2020 — Present</div>
+                        <div class="timeline-content resume-card">
+                            <h3>Content Creator</h3>
+                            <h4>Youtuber</h4>
+                            <p>Produce engaging content across blogs, social media, and video platforms. Plan and
+                                execute content strategies that grow audience and reflect brand voice.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Certificates Section -->
+                <h3 class="timeline-header" style="margin-top: 60px; margin-bottom: 30px;">Certifications</h3>
+                <div class="certificates-grid">
+                    <!-- Cert 1 -->
+                    <div class="certificate-card">
+                        <div class="cert-icon">🏆</div>
+                        <div class="cert-year">2023-2024</div>
+                        <h3>Top 1 Team in Mechanical Lab</h3>
+                        <h4>SRM University</h4>
+                        <p>Amazing experience working with team to achieve this recognition.</p>
+                        <a href="https://drive.google.com/file/d/1y33xsNuuHwhkmiV0J0HKYibYFgV5RFQP/view" target="_blank"
+                            class="btn-cert">View Certificate</a>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="certificate-card">
+                        <div class="cert-icon">🛡️</div>
+                        <div class="cert-year">2024-2025</div>
+                        <h3>Palo Alto Internship</h3>
+                        <h4>Edukills, ACITE</h4>
+                        <p>Successfully completed 10-week internship program in cybersecurity defense features and web
+                            development.</p>
+                        <a href="https://drive.google.com/file/d/1U33q8y3SLzEZCxRayu-tml9wc3wqlUeu/view" target="_blank"
+                            class="btn-cert">View Certificate</a>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="certificate-card">
+                        <div class="cert-icon">🏢</div>
+                        <div class="cert-year">2024-2025</div>
+                        <h3>TATA Internship</h3>
+                        <h4>Forage</h4>
+                        <p>Incredible experience collaborating with team during internship at IAM Concepts, gaining
+                            valuable industry exposure.</p>
+                        <a href="https://drive.google.com/file/d/157i0-bzGclulQrz_NcpZiaFMc13D3cbv/view" target="_blank"
+                            class="btn-cert">View Certificate</a>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="certificate-card">
+                        <div class="cert-icon">☕</div>
+                        <div class="cert-year">2023-2024</div>
+                        <h3>Java Programming</h3>
+                        <h4>NPTEL</h4>
+                        <p>Successfully completed NPTEL course on Java Programming, gaining hands-on knowledge of
+                            object-oriented programming.</p>
+                        <a href="https://drive.google.com/file/d/1MxwS0j3LjEBGwQZlAeZiK8Ji0UM8xpxj/view" target="_blank"
+                            class="btn-cert">View Certificate</a>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="certificate-card">
+                        <div class="cert-icon">🔒</div>
+                        <div class="cert-year">2024-2025</div>
+                        <h3>Information Security</h3>
+                        <h4>NPTEL</h4>
+                        <p>Completed Information Security course learning cryptographic techniques, network security
+                            fundamentals, and risk mitigation.</p>
+                        <a href="https://drive.google.com/file/d/1XATbwp2BJNn5hICBajzqX09leQiuVhgu/view" target="_blank"
+                            class="btn-cert">View Certificate</a>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div class="certificate-card">
+                        <div class="cert-icon">🎨</div>
+                        <div class="cert-year">2025-2026</div>
+                        <h3>Frontend Web Developer</h3>
+                        <h4>UDEMY</h4>
+                        <p>Completed Frontend Web Developer course learning with full practical HTML, CSS, JAVASCRIPT.
+                        </p>
+                        <a href="https://www.udemy.com/certificate/UC-10071026-670e-46d9-b3b8-04a165c65124/"
+                            target="_blank" class="btn-cert">View Certificate</a>
+                    </div>
+
+                    <!-- Cert 7 -->
+                    <div class="certificate-card">
+                        <div class="cert-icon">🔒</div>
+                        <div class="cert-year">2025-2026</div>
+                        <h3>Ethical Hacking</h3>
+                        <h4>NPTEL</h4>
+                        <p>I completed the Ethical Hacking course from NPTEL (IIT Kharagpur).</p>
+                        <a href="https://drive.google.com/file/d/1n8YnUr79WIKgBhUPgMZNNoG2PVL-HiqE/view" target="_blank"
+                            class="btn-cert">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <p class="section-subtitle">Featured work and applications I've built</p>
+                <div class="projects-grid">
+
+                    <!-- Project 1: Online Voting Platform -->
+                    <article class="project-card">
+                        <div class="project-image"
+                            style="background-image: url('assets/projects/voting.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-info">
+                            <h3>Online Voting Platform</h3>
+                            <p>A secure and intuitive web application designed for institutions to conduct digital
+                                elections. Built using HTML, CSS, JavaScript, and Firebase, supporting real-time voting,
+                                user authentication, and result tracking.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>Python</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://veera-crt.github.io/CybVars_Voting/index.html" target="_blank"
+                                    class="btn-link">🔗 Live Demo</a>
+                                <a href="https://github.com/veera-crt/CybVars_Voting" target="_blank"
+                                    class="btn-link">📂 GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Password Manager -->
+                    <article class="project-card">
+                        <div class="project-image"
+                            style="background-image: url('assets/projects/password.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-info">
+                            <h3>Password Manager</h3>
+                            <p>A modern and responsive website representing a cybersecurity-focused platform. Features
+                                clean UI/UX design with smooth animations, dark-themed aesthetic, and section-based
+                                navigation ideal for tech startups.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>Python</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://veera-crt.github.io/cybvars-frontend/index.html" target="_blank"
+                                    class="btn-link">🔗 Live Demo</a>
+                                <a href="https://github.com/veera-crt/cybvars-frontend" target="_blank"
+                                    class="btn-link">📂 GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Tic Tac Toe -->
+                    <article class="project-card">
+                        <div class="project-image"
+                            style="background-image: url('assets/projects/tictactoe.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-info">
+                            <h3>Tic-Tac-Tao Game</h3>
+                            <p>A simple yet interactive frontend project where players can enjoy a classic Tic-Tac-Toe
+                                game with a sleek UI. The game logic is handled using JavaScript, and Firebase is
+                                integrated for storing scores or user data.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://veera-crt.github.io/Tic-Tac-Tao-Game/" target="_blank"
+                                    class="btn-link">🔗 Live Demo</a>
+                                <a href="https://github.com/veera-crt/Tic-Tac-Tao-Game" target="_blank"
+                                    class="btn-link">📂 GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Alarm App -->
+                    <article class="project-card">
+                        <div class="project-image"
+                            style="background-image: url('assets/projects/alarm.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-info">
+                            <h3>Alarm App</h3>
+                            <p>This Alarm App was developed as part of our Computer Architecture project, simulating the
+                                behavior of system calls in a real-world alarm system. It allows users to set and manage
+                                alarms through an intuitive interface.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>System calls</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://veera-crt.github.io/alarm-app/" target="_blank" class="btn-link">🔗
+                                    Live Demo</a>
+                                <a href="https://github.com/veera-crt/alarm-app" target="_blank" class="btn-link">📂
+                                    GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 5: Medical Bot -->
+                    <article class="project-card">
+                        <div class="project-image"
+                            style="background-image: url('assets/projects/medical.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-info">
+                            <h3>Medical Bot</h3>
+                            <p>This Medical Bot was developed as part of our Artificial Intelligence coursework. It
+                                leverages Natural Language Processing (NLP) to interpret user symptoms and provide
+                                intelligent responses based on medical datasets.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>Python</span>
+                                <span>Dataset</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://veera-crt.github.io/AI-MEDICARE-CHATBOT/" target="_blank"
+                                    class="btn-link">🔗 Live Demo</a>
+                                <a href="https://github.com/veera-crt/AI-MEDICARE-CHATBOT" target="_blank"
+                                    class="btn-link">📂 GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 6: Clara Olive Home Site -->
+                    <article class="project-card">
+                        <div class="project-image custom-bg clara-bg">
+                            <i class="fas fa-hand-holding-heart project-icon"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Clara Olive Home Site</h3>
+                            <p>This responsive website was developed during my 2nd-year summer as part of the Community
+                                Connect initiative. It serves as a digital presence for Clara Olive Home, highlighting
+                                their mission, services, and contact information.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://claraolivehome.sbs/index.html" target="_blank" class="btn-link">🔗 Live
+                                    Demo</a>
+                                <a href="https://github.com/veera-crt/clara-olive-home" target="_blank"
+                                    class="btn-link">📂 GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+
+                    <!-- Project 8: Threat Vigilance Keeper -->
+                    <article class="project-card">
+                        <div class="project-image custom-bg tvk-bg">
+                            <i class="fas fa-shield-halved project-icon"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Threat Vigilance Keeper v1.0</h3>
+                            <p>Welcome to TVK: Emergency. Vigilance. Action. TVK is your mobile companion for personal
+                                safety, digital threat alerts, and cyber emergency response. Designed for real-time
+                                vigilance.</p>
+                            <div class="project-tags">
+                                <span>Flutter</span>
+                                <span>Firebase</span>
+                                <span>Python</span>
+                                <span>AI</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="btn-link building"><i class="fas fa-cog fa-spin"></i> Building in
+                                    Progress</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 9: Crop & Carry -->
+                    <article class="project-card">
+                        <div class="project-image custom-bg crop-bg">
+                            <i class="fas fa-leaf project-icon"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Crop & Carry</h3>
+                            <p>Empowering Agriculture. Simplifying Access. Crop & Carry is a digital initiative aimed at
+                                bridging the gap between farmers and consumers. The platform enables direct farm-to-home
+                                delivery.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JS</span>
+                                <span>AgriTech</span>
+                                <span>Python</span>
+                                <span>MySQL</span>
+                            </div>
+                            <div class="project-links">
+                                <span class="btn-link building"><i class="fas fa-cog fa-spin"></i> Building in
+                                    Progress</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <!-- Freelancing section removed as requested -->
+
+                <div class="contact-connect-section">
+                    <h3 class="contact-subtitle">Let's connect and discuss opportunities</h3>
+
+                    <div class="contact-grid">
+                        <!-- Email -->
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4>Email</h4>
+                            <a href="mailto:vg2632@srmist.edu.in">vg2632@srmist.edu.in</a>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h4>Phone</h4>
+                            <a href="tel:+917868953592">+91-7868953592</a>
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/veera-pandi-9b0b3b25a/" target="_blank">Connect with
+                                me</a>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/veera-crt" target="_blank">View my code</a>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/917868953592" target="_blank">Message me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+    <a href="#" class="back-to-top" aria-label="Back to Top">↑</a>
+
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
